@@ -1,1 +1,3 @@
 # dotfiles
+
+- git-aware-prompt
