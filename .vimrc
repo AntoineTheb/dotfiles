@@ -31,6 +31,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'roosta/srcery'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install'  }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
