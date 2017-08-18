@@ -16,8 +16,12 @@ set lazyredraw
 set foldenable
 set foldnestmax=10
 set nowrap
+set switchbuf+=usetab,newtab
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+let g:python_host_prog = '/usr/bin/python2.7'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
@@ -39,7 +43,9 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install'  }
 Plugin 'junegunn/fzf.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'mhinz/vim-grepper'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'neomake/neomake'
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call vundle#end()            " required
 
@@ -73,6 +79,8 @@ if !exists('g:airline_symbols')
 endif
 set laststatus=2
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " MAPPINGS
 " =========================================
@@ -98,8 +106,6 @@ map <leader>` ~
 imap <Tab> <C-t>
 imap <S-TAB> <C-d>
 
-" Toggle bools and stuff
-nnoremap <leader><Tab> :Switch<CR><CR>
 " open/close object, open means on multiple lines, close means one line
-map <buffer> <leader>{ ^f{f}bea,<esc>:s/,/,\r/g<cr>%a<cr><esc>=a}:nohl<cr>
-map <buffer> <leader>} ]}k$xva}J
+nnoremap <buffer> <leader>{ ^f{f}bea,<esc>:s/,/,\r/g<cr>%a<cr><esc>=a}:nohl<cr>
+nnoremap <buffer> <leader>} ]}k$xva}J

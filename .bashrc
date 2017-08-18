@@ -31,3 +31,13 @@ fi
 source /usr/share/nvm/init-nvm.sh
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+deploy(){
+  if [ $# -lt 1 ]; then
+          echo "Usage: deploy <build name> [server, default to bfox.prod.d06]"
+          return
+  fi
+  local server="${2:-bfox.prod.d06}"
+  echo connecting to $server...
+  ssh -t $server "sudo sh /opt/outbox/bin/install-es5.sh $1"
+}
